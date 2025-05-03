@@ -1,5 +1,5 @@
 <template>
-    <nav class=""navebar>
+    <nav class="navbar">
         <router-link to="/" class="nav-link">Задачи</router-link>
         <router-link to="/profile" class="nav-link">Профиль</router-link>
     </nav>
