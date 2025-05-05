@@ -16,12 +16,12 @@
                 :key="task.id"
                 class="task-item"
             >
-            <div class="class-text">
+            <div class="task-text">
                 {{ task.title }}
             </div>
             <button
                 class="complete-button"
-                @click=completeTask(task.id)>Done
+                @click="completeTask(task.id)">Done
             </button>
             </div>
         </div>
@@ -30,18 +30,22 @@
 
 <script>
 export default{
-    name:'TaskView',
+    name:'TasksView',
     data() {
         return {
             tasks:[],
             newTask:''
         }
     },
-    async mounted( {
+    async mounted() {
         await this.fetchTasks()
     },
 methods: {
-    
+    async fetchtasks() {
+        try {
+            const tg_user = window.Telegram.webapp.initDataUnsafe?.user
+        }
+    }
 })
 }
 </script>
