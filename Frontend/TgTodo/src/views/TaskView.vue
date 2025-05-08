@@ -44,6 +44,12 @@ methods: {
     async fetchtasks() {
         try {
             const tg_user = window.Telegram.webapp.initDataUnsafe?.user
+            const response = await fetch(`https://solid-space-waddle-jrj697xgx47fgxv-8000.app.github.dev/api/taks/${tg_user.id}`)
+            const data = await response.json()
+            this.tasks = data
+        }
+        catch (error) {
+            console.log('error', error)
         }
     }
 })
