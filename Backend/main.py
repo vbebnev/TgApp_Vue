@@ -11,7 +11,7 @@ class AddTask(BaseModel):
     tg_id:int
     title:str
 
-class ComppleteTask(BaseModel):
+class CompleteTask(BaseModel):
     id:int
 
 @asynccontextmanager
@@ -49,7 +49,7 @@ async def addTask(task:AddTask):
     return {'status': 'ok'}
 
 @app.patch("/api/complete")
-async def completeTask(task:completeTask):
+async def completeTask(task:CompleteTask):
     user = await rq.add_user(task.tg_id)
     await rq.complete_task(user.id)
     return {'status': 'ok'}
