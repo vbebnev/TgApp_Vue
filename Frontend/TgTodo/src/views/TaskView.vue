@@ -1,4 +1,10 @@
 <template>
+<div>
+    <h1>Профиль</h1>
+    <p v-if="platform">Открыто из Telegram на платформе: {{ platform }}</p>
+    <p v-else>Telegram WebApp не найден</p>
+  </div>
+
     <div class="tasks_container">
         <div class="tasks-header">
             <input
@@ -29,6 +35,8 @@
 </template>
 
 <script>
+import { getTelegramWebApp } from '../telegram'
+
 export default{
     name:'TasksView',
     data() {
@@ -37,14 +45,23 @@ export default{
             newTask:''
         }
     },
-    async mounted() {
+    async mounted() {    
+        const webApp = getTelegramWebApp()
+        if (webApp) {
+        this.platform = webApp.platform
+        }
+
         await this.fetchTasks()
     },
 methods: {
     async fetchTasks() {
         try {
-            const tg_user = window.Telegram.webapp.initDataUnsafe?.user
+            console.log('trying to fetch tasks')
+            console.log('tlg web app - '+ window.Telegram.WebApp)
+            const tg_user = window.Telegram.WebApp.initDataUnsafe?.user
+            console.log('telega answered')
             const response = await fetch(`https://solid-space-waddle-jrj697xgx47fgxv-8000.app.github.dev/api/taks/${tg_user.id}`)
+            console.log('backend answered')
             const data = await response.json()
             this.tasks = data
         }
@@ -57,7 +74,7 @@ methods: {
         if(!this.newTask) return 
 
         try {
-            const tg_user = window.Telegram.webapp.initDataUnsafe?.user
+            const tg_user = window.Telegram.WebApp.initDataUnsafe?.user
             const response = await fetch(`https://solid-space-waddle-jrj697xgx47fgxv-8000.app.github.dev/api/add`, {
                 method: 'POST', 
                 headers: {'Content-Type': 'application/json'},

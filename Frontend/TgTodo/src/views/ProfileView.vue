@@ -27,11 +27,13 @@
         methods: {
             async fetchProfile(){
                 try {
-                    const tg_user = window.Telegram.webapp.initDataUnsafe?.user
+                    console.log('Trying to fetch tasks')
+                    const tg_user = window.Telegram.WebApp.initDataUnsafe?.user
+                    console.log(tg_user)
                     const response = await fetch(`https://solid-space-waddle-jrj697xgx47fgxv-8000.app.github.dev/api/main/${tg_user.id}`)
                     const data = await response.json()
                     this.id = tg_user.id
-                    this.name =tg_user.name
+                    this.name =tg_user.first_name
                     this.completedTasks = data.completedTasks                    
                 } catch (error){
                     console.log(`error - ${error}`)
