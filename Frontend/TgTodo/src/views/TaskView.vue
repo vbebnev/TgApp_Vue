@@ -62,7 +62,9 @@ methods: {
             console.log('telega answered')
             const response = await fetch(`https://solid-space-waddle-jrj697xgx47fgxv-8000.app.github.dev/api/taks/${tg_user.id}`)
             console.log('backend answered')
+            console.log(response)
             const data = await response.json()
+            console.log(data)
             this.tasks = data
         }
         catch (error) {

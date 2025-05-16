@@ -31,7 +31,9 @@
                     const tg_user = window.Telegram.WebApp.initDataUnsafe?.user
                     console.log(tg_user)
                     const response = await fetch(`https://solid-space-waddle-jrj697xgx47fgxv-8000.app.github.dev/api/main/${tg_user.id}`)
+                    console.log(response)
                     const data = await response.json()
+                    console.log(data)
                     this.id = tg_user.id
                     this.name =tg_user.first_name
                     this.completedTasks = data.completedTasks                    
