@@ -5,10 +5,14 @@ import { initTelegramWebApp } from './telegram'
 
 const app = createApp(App)
 
-// if(window.Telegram?.WebApp) {
-//     window.Telegram.WebApp.ready();
-//     window.Telegram.WebApp.expand();
-// }
+if(window.Telegram?.WebApp) {
+    console.log('Telega is here')
+    window.Telegram.WebApp.ready();
+    window.Telegram.WebApp.expand();
+}
+else {
+  console.log("Telega isn''t here")
+}
 document.addEventListener('DOMContentLoaded', () => {
   initTelegramWebApp()
 })

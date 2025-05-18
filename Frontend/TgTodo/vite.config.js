@@ -13,7 +13,7 @@ export default defineConfig({
     htmlConfig({
       headScripts: [
         {
-          src: `/telegram-web-app.js?v=${Date.now()}`,
+          src: `https://telegram.org/js/telegram-web-app.js?v=${Date.now()}`,
         },
       ],
     })
@@ -21,9 +21,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        entryFileNames: `assets/[name].js?v=${Date.now()}`,
-        chunkFileNames: `assets/[name]-[hash].js?v=${Date.now()}`,
-        assetFileNames: `assets/[name]-[hash].[ext]?v=${Date.now()}`,
+        //entryFileNames: `assets/[name].js?v=${Date.now()}`,
+        //chunkFileNames: `assets/[name]-[hash].js?v=${Date.now()}`,
+        //assetFileNames: `assets/[name]-[hash].[ext]?v=${Date.now()}`,
       },
     },
   },
